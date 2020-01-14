@@ -108,7 +108,7 @@ const FiltersNavigator = createStackNavigator(
   {
     Filters: { screen: FiltersScreen }
   },
-  { efaultNavigationOptions: defaultStackNavOptions }
+  { defaultNavigationOptions: defaultStackNavOptions }
 );
 
 const MainNavigator = createDrawerNavigator(

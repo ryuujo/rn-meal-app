@@ -4,7 +4,6 @@ import {
   Image,
   Text,
   View,
-  Button,
   StyleSheet
 } from 'react-native';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
