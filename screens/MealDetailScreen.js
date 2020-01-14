@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  ScrollView,
-  Image,
-  Text,
-  View,
-  StyleSheet
-} from 'react-native';
+import { ScrollView, Image, Text, View, StyleSheet } from 'react-native';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import { MEALS } from '../data/dummy-data';
 import HeaderButton from '../components/HeaderButton';
@@ -39,6 +33,28 @@ const MealDetailScreen = props => {
       {selectedMeal.steps.map(step => (
         <ListItem key={step}>{step}</ListItem>
       ))}
+      <View style={styles.tags}>
+        {selectedMeal.isGlutenFree ? (
+          <View style={styles.tagContainer}>
+            <Text>Glutten-Free</Text>
+          </View>
+        ) : null}
+        {selectedMeal.isLactoseFree ? (
+          <View style={styles.tagContainer}>
+            <Text>Lactose-Free</Text>
+          </View>
+        ) : null}
+        {selectedMeal.isVegan ? (
+          <View style={styles.tagContainer}>
+            <Text>Vegan</Text>
+          </View>
+        ) : null}
+        {selectedMeal.isVegetarian ? (
+          <View style={styles.tagContainer}>
+            <Text>Vegetarian</Text>
+          </View>
+        ) : null}
+      </View>
     </ScrollView>
   );
 };
@@ -83,6 +99,18 @@ const styles = StyleSheet.create({
     borderColor: '#ccc',
     borderWidth: 1,
     padding: 10
+  },
+  tags: {
+    flexDirection: 'row',
+    marginVertical: 20,
+    marginHorizontal: 15,
+    flexWrap: 'wrap'
+  },
+  tagContainer: {
+    backgroundColor: '#ccc',
+    padding: 10,
+    borderRadius: 50,
+    margin: 5
   }
 });
 
