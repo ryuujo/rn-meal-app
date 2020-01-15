@@ -38,7 +38,6 @@ const MealDetailScreen = props => {
       currentMealIsFavorite ? 'Unmarked as Favorite' : 'Marked as Favorite',
       5
     );
-    console.log(currentMealIsFavorite);
   }, [dispatch, mealId, currentMealIsFavorite]);
 
   useEffect(() => {
