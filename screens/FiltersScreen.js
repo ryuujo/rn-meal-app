@@ -1,9 +1,18 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Text, View, StyleSheet, Switch, Platform } from 'react-native';
+import {
+  Text,
+  View,
+  StyleSheet,
+  Switch,
+  Platform,
+  ToastAndroid
+} from 'react-native';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import HeaderButton from '../components/HeaderButton';
+import { useDispatch } from 'react-redux';
 
 import Colors from '../constants/Colors';
+import { setFilters } from '../store/actions/meals';
 
 const FilterSwitch = props => {
   return (
@@ -27,6 +36,8 @@ const FilterScreen = props => {
   const [isVegan, setIsVegan] = useState(false);
   const [isVegetarian, setIsVegetarian] = useState(false);
 
+  const dispatch = useDispatch();
+
   const saveFilters = useCallback(() => {
     const appliedFilters = {
       glutenFree: isGlutenFree,
@@ -34,8 +45,9 @@ const FilterScreen = props => {
       vegan: isVegan,
       vegetarian: isVegetarian
     };
-    console.log(appliedFilters);
-  }, [isGlutenFree, isLactoseFree, isVegetarian, isVegan]);
+    dispatch(setFilters(appliedFilters));
+    ToastAndroid.show('Config saved!', 5);
+  }, [isGlutenFree, isLactoseFree, isVegetarian, isVegan, dispatch]);
 
   useEffect(() => {
     navigation.setParams({ save: saveFilters });

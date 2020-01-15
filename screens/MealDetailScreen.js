@@ -1,5 +1,12 @@
 import React, { useEffect, useCallback } from 'react';
-import { ScrollView, Image, Text, View, StyleSheet } from 'react-native';
+import {
+  ScrollView,
+  Image,
+  Text,
+  View,
+  StyleSheet,
+  ToastAndroid
+} from 'react-native';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -27,7 +34,12 @@ const MealDetailScreen = props => {
   const dispatch = useDispatch();
   const toggleFavoriteHandler = useCallback(() => {
     dispatch(toggleFavorite(mealId));
-  }, [dispatch, mealId]);
+    ToastAndroid.show(
+      currentMealIsFavorite ? 'Unmarked as Favorite' : 'Marked as Favorite',
+      5
+    );
+    console.log(currentMealIsFavorite);
+  }, [dispatch, mealId, currentMealIsFavorite]);
 
   useEffect(() => {
     props.navigation.setParams({ toggleFav: toggleFavoriteHandler });
