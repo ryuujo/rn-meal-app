@@ -12,7 +12,9 @@ const FavoritesScreen = props => {
   } else {
     return (
       <View style={styles.empty}>
-        <Text style={styles.textEmpty}>Nothing in favorites</Text>
+        <Text style={styles.textEmpty}>
+          No Favorite Meals found. Start adding some!
+        </Text>
       </View>
     );
   }
@@ -26,7 +28,7 @@ const styles = StyleSheet.create({
   },
   textEmpty: {
     fontFamily: 'open-sans',
-    fontSize: 20
+    fontSize: 15
   }
 });
 
